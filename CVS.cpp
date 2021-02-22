@@ -288,7 +288,7 @@ public:
     }
 
     //Печатает таблицу на консоль
-    int print_table() {
+    void print_table() {
         
         map <string, int> ::iterator it;
         size_t columns = name_column.size();
