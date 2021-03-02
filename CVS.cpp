@@ -127,27 +127,9 @@ private:
                         break;
                     }
 
-                    case '+': {
-                        key1 = need_cacl.at(i).substr(start_key, j - 1);
-                        op = equation[j];
-                        start_key = 0;
-                        break;
-                    }
-
-                    case '-': {
-                        key1 = need_cacl.at(i).substr(start_key, j - 1);
-                        op = equation[j];
-                        start_key = 0;
-                        break;
-                    }
-
-                    case '*': {
-                        key1 = need_cacl.at(i).substr(start_key, j - 1);
-                        op = equation[j];
-                        start_key = 0;
-                        break;
-                    }
-
+                    case '+': 
+                    case '-':
+                    case '*': 
                     case '/': {
                         key1 = need_cacl.at(i).substr(start_key, j - 1);
                         op = equation[j];
@@ -167,92 +149,42 @@ private:
             map <string, int> ::iterator it;
             bool is_cacl = false;
 
+            it = table.find(key1);
+            if (it == table.end()) {
+                is_cacl = false;
+                break;
+            }
+            int k1 = it->second;
+            it = table.find(key2);
+            if (it == table.end()) {
+                is_cacl = false;
+                break;
+            }
+            int k2 = it->second;
             //Вычисление уравнения
             switch (op)
             {
 
             case '+': {
-                it = table.find(key1);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k1 = it->second;
-
-                it = table.find(key2);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k2 = it->second;
-
                 table.insert(make_pair(need_cacl_key.at(i), k1 + k2));
-
                 is_cacl = true;
                 break;
             }
 
             case '-': {
-                it = table.find(key1);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k1 = it->second;
-
-                it = table.find(key2);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k2 = it->second;
-
-
                 table.insert(make_pair(need_cacl_key.at(i), k1 - k2));
-
                 is_cacl = true;
                 break;
             }
 
             case '*': {
-                it = table.find(key1);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k1 = it->second;
-
-                it = table.find(key2);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k2 = it->second;
-
                 table.insert(make_pair(need_cacl_key.at(i), k1 * k2));
-
                 is_cacl = true;
                 break;
             }
 
             case '/': {
-                it = table.find(key1);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k1 = it->second;
-
-                it = table.find(key2);
-                if (it == table.end()) {
-                    is_cacl = false;
-                    break;
-                }
-                int k2 = it->second;
-
-
                 table.insert(make_pair(need_cacl_key.at(i), k1 / k2));
-
                 is_cacl = true;
                 break;
             }
