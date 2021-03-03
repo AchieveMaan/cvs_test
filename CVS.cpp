@@ -182,7 +182,8 @@ private:
             }
 
             case '/': {
-                table.insert(make_pair(need_cacl_key.at(i), k1 / k2));
+                if (k2 == 0) table.insert(make_pair(need_cacl_key.at(i), (double) k1 / 0.0));
+                else         table.insert(make_pair(need_cacl_key.at(i), k1 / k2));
                 is_cacl = true;
                 break;
             }
