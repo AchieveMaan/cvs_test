@@ -152,13 +152,11 @@ private:
             it = table.find(key1);
             if (it == table.end()) {
                 is_cacl = false;
-                break;
             }
             int k1 = it->second;
             it = table.find(key2);
             if (it == table.end()) {
                 is_cacl = false;
-                break;
             }
             int k2 = it->second;
             //Вычисление уравнения
